@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>about:blank disguise</title>
+  <script>
+    window.onload = function () {
+      let newDoc = window.open("about:blank", "_self");
+      newDoc.document.write(`
+        <html>
+        <head>
+          <title>Hidden Website</title>
+          <style>
+            body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+          </style>
+        </head>
+        <body>
+          <h1>Welcome!</h1>
+          <p>This site is running inside about:blank.</p>
+        </body>
+        </html>
+      `);
+      newDoc.document.close();
+    };
+  </script>
+</head>
+<body>
+</body>
+</html>
