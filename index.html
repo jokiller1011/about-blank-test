@@ -2,24 +2,73 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>about:blank disguise</title>
+  <title>Loading...</title>
   <script>
     window.onload = function () {
+      // Open about:blank in the same tab
       let newDoc = window.open("about:blank", "_self");
-      newDoc.document.write(`
+
+      // Game content
+      const content = `
         <html>
         <head>
-          <title>Hidden Website</title>
+          <title>Clicker Game</title>
           <style>
-            body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+            body {
+              font-family: Arial, sans-serif;
+              background: #1e1e2f;
+              color: #fff;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              margin: 0;
+            }
+            .game {
+              text-align: center;
+              background: #2d2d44;
+              padding: 30px;
+              border-radius: 12px;
+              box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            }
+            button {
+              background: #4CAF50;
+              border: none;
+              padding: 15px 30px;
+              font-size: 18px;
+              border-radius: 8px;
+              cursor: pointer;
+              color: white;
+              margin-top: 20px;
+              transition: 0.2s;
+            }
+            button:hover {
+              background: #45a049;
+            }
+            h1, p {
+              margin: 10px 0;
+            }
           </style>
         </head>
         <body>
-          <h1>Welcome!</h1>
-          <p>This site is running inside about:blank.</p>
+          <div class="game">
+            <h1>🍪 Cookie Clicker</h1>
+            <p>Score: <span id="score">0</span></p>
+            <button onclick="increaseScore()">Click Me!</button>
+          </div>
+          <script>
+            let score = 0;
+            function increaseScore() {
+              score++;
+              document.getElementById('score').innerText = score;
+            }
+          </script>
         </body>
         </html>
-      `);
+      `;
+
+      // Write content into the about:blank page
+      newDoc.document.write(content);
       newDoc.document.close();
     };
   </script>
